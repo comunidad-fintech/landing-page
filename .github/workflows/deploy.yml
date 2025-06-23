@@ -3,26 +3,26 @@ name: Deploy Temporal en GitHub Pages
 on:
   push:
     branches:
-      - dev  
+      - test 
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source branch
+      - name: Verificamos la version
         uses: actions/checkout@v3
         with:
           submodules: true
           fetch-depth: 0
 
-      - name: Setup Hugo
+      - name: Setup de Hugo
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.125.4'
           extended: true
 
-      - name: Build the site
+      - name: Construir el Sitio
         run: hugo --minify
 
       - name: Deploy to GitHub Pages
